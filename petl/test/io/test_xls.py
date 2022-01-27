@@ -6,6 +6,8 @@ import sys
 from datetime import datetime
 from tempfile import NamedTemporaryFile
 
+import pytest
+
 try:
     from unittest.mock import patch
 except ImportError:
@@ -30,7 +32,7 @@ try:
     # noinspection PyUnresolvedReferences
     import xlwt
 except ImportError as e:
-    print('SKIP xls tests: %s' % e, file=sys.stderr)
+    pytest.skip('SKIP xls tests: %s' % e, allow_module_level=True)
 else:
 
     def test_fromxls():

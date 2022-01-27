@@ -6,6 +6,8 @@ import sys
 from datetime import datetime
 from tempfile import NamedTemporaryFile
 
+import pytest
+
 import petl as etl
 from petl.io.xlsx import fromxlsx, toxlsx, appendxlsx
 from petl.test.helpers import ieq, eq_
@@ -23,7 +25,7 @@ try:
     # noinspection PyUnresolvedReferences
     import openpyxl
 except ImportError as e:
-    print('SKIP xlsx tests: %s' % e, file=sys.stderr)
+    pytest.skip('SKIP xlsx tests: %s' % e, allow_module_level=True)
 else:
 
     def test_fromxlsx():

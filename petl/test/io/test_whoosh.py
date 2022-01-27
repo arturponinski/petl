@@ -6,6 +6,7 @@ import sys
 import os
 import tempfile
 
+import pytest
 
 from petl.test.helpers import ieq
 import petl as etl
@@ -17,7 +18,7 @@ try:
     # noinspection PyUnresolvedReferences
     import whoosh
 except ImportError as e:
-    print('SKIP whoosh tests: %s' % e, file=sys.stderr)
+    pytest.skip('SKIP whoosh tests: %s' % e, allow_module_level=True)
 else:
 
     from whoosh.index import create_in

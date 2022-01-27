@@ -8,6 +8,8 @@ from datetime import datetime, date
 from decimal import Decimal
 from tempfile import NamedTemporaryFile
 
+import pytest
+
 from petl.compat import PY3
 from petl.transform.basics import cat
 from petl.util.base import dicts
@@ -28,7 +30,7 @@ try:
     # import fastavro dependencies
     import pytz
 except ImportError as e:
-    print('SKIP avro tests: %s' % e, file=sys.stderr)
+    pytest.skip('SKIP avro tests: %s' % e, allow_module_level=True)
 else:
     # region Test Cases
 

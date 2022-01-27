@@ -4,6 +4,7 @@ from __future__ import absolute_import, print_function, division
 import logging
 import sys
 
+import pytest
 
 import petl as etl
 from petl.test.helpers import ieq, eq_
@@ -23,7 +24,7 @@ try:
     # noinspection PyUnresolvedReferences
     import intervaltree
 except ImportError as e:
-    print('SKIP interval tests: %s' % e, file=sys.stderr)
+    pytest.skip('SKIP interval tests: %s' % e, allow_module_level=True)
 else:
 
     def test_intervallookup():
